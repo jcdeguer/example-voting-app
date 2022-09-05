@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+    tools {
+        node 'NodeJS 8.9.0'
+    }
+
+    stages {
+        stage('build') {
+            when {
+                changeset "**/./**"
+            }
+            steps {
+                echo 'Starting build stage for result'
+                dir('result'){
+                    sh 'npm install && npm ls'
+                }
+                echo 'Finish build step'
+                sleep 5
+            }
+        }
+        stage('test') {
+            when {
+                changeset "**/worker/**"
+            }
+            steps {
+                echo 'Running Unit Test for result app'
+                dir('result'){
+                    sh 'npm install && npm test'
+                }
+                echo 'Finish test step'
+                sleep 5
+            }
+        }
+    }
+    post {
+        always{
+            echo 'This pipeline finish'
+        }
+    }
+}
