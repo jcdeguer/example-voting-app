@@ -25,7 +25,7 @@ pipeline {
             steps {
                 echo 'Running Unit Test for result app'
                 dir('result'){
-                    sh 'npm install && npm test'
+                    sh 'npm test'
                 }
                 echo 'Finish test step'
                 sleep 5
