@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('build') {
             when {
-                changeset "**/./**"
+                changeset "**/result/**"
             }
             steps {
                 echo 'Starting build stage for result'
@@ -20,7 +20,7 @@ pipeline {
         }
         stage('test') {
             when {
-                changeset "**/worker/**"
+                changeset "**/result/**"
             }
             steps {
                 echo 'Running Unit Test for result app'
