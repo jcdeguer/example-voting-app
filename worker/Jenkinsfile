@@ -20,7 +20,9 @@ pipeline {
             steps {
                 echo 'Starting test step'
                 echo 'Running Unit Test on worker app'
-
+                dir('worker'){
+                    sh 'mvn clean test'
+                }
                 echo 'Finish test step'
                 sleep 5
             }
@@ -29,6 +31,9 @@ pipeline {
             steps {
                 echo 'Starting package step'
                 echo 'Packaging worker app'
+                dir('worker'){
+                    sh 'mvn package'
+                }
                 echo 'Finish package step'
                 sleep 5
             }
