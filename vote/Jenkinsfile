@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('build') {
             when {
-                changeset "**/worker/**"
+                changeset "**/vote/**"
             }
             steps {
                 echo 'Starting build step'
@@ -23,7 +23,7 @@ pipeline {
         }
         stage('test') {
             when {
-                changeset "**/worker/**"
+                changeset "**/vote/**"
             }
             steps {
                 echo 'Starting test step'
