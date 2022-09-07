@@ -15,7 +15,7 @@ pipeline {
                 echo 'Starting build step'
                 echo 'Compiling vote app'
                 dir('vote'){
-                    sh 'pip install -i requirements.txt'
+                    sh 'pip3 install -i requirements.txt'
                 }
                 echo 'Finish build step'
                 sleep 5
